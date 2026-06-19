@@ -1,0 +1,163 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Chhoti Bachhi ❤️</title><style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif}
+
+body{
+background:linear-gradient(135deg,#4a148c,#8e24aa);
+height:100vh;
+overflow:hidden;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.card{
+width:90%;
+max-width:750px;
+padding:30px;
+text-align:center;
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(12px);
+border-radius:25px;
+color:#ffd4f3;
+box-shadow:0 0 30px rgba(0,0,0,.2);
+z-index:2;
+}
+
+h1{color:#ff8fd8;margin-bottom:15px}
+p{line-height:1.8;font-size:18px}
+
+button{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:40px;
+background:#ff69b4;
+color:#fff;
+font-size:16px;
+cursor:pointer;
+}
+
+.hidden{display:none}
+
+.heart{
+position:absolute;
+animation:float linear infinite;
+}
+
+@keyframes float{
+from{transform:translateY(110vh);opacity:0}
+10%{opacity:1}
+to{transform:translateY(-120px);opacity:0}
+}
+
+#noBtn{
+position:absolute;
+margin-left:40px;
+}
+
+#result{
+margin-top:25px;
+font-size:26px;
+font-weight:bold;
+color:#ffb6e6;
+}
+</style></head><body><audio id="music" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio><div class="card"><div id="page1">
+<h1>For My Chhoti Bachhi ❤️</h1>
+<p>A small website made by your Bandar 🐵</p>
+<button onclick="openLetter()">Open 💜</button>
+</div><div id="page2" class="hidden">
+<h1>Dear Chhoti Bachhi ❤️</h1>
+<p id="typing"></p>
+<button onclick="showFinal()">Continue ❤️</button>
+</div><div id="page3" class="hidden">
+<h1>Can We Start Again? ❤️</h1>
+<p>Bandar is waiting for your answer 🥺</p><button onclick="yesClicked()">Yes ❤️</button>
+<button id="noBtn">No 😅</button>
+
+<div id="result"></div>
+</div></div><script>
+
+// Floating Hearts
+for(let i=0;i<40;i++){
+let h=document.createElement("div");
+h.className="heart";
+h.innerHTML="❤️";
+h.style.left=Math.random()*100+"vw";
+h.style.fontSize=(15+Math.random()*25)+"px";
+h.style.animationDuration=(5+Math.random()*6)+"s";
+document.body.appendChild(h);
+}
+
+const text=`I know a simple sorry may not be enough, but I wanted to put in a little extra effort because you're important to me.
+
+You may be my Chhoti Bachhi, my Little Girl, and sometimes my favorite Microorganism, but you're also someone whose smile means a lot to me.
+
+If I've hurt you, I'm truly sorry. Every memory with you is special, and I hope we can create many more together. 💜`;
+
+function openLetter(){
+document.getElementById("music").play().catch(()=>{});
+document.getElementById("page1").classList.add("hidden");
+document.getElementById("page2").classList.remove("hidden");
+
+let i=0;
+let box=document.getElementById("typing");
+
+let t=setInterval(()=>{
+box.innerHTML+=text.charAt(i);
+i++;
+if(i>=text.length) clearInterval(t);
+},35);
+}
+
+function showFinal(){
+document.getElementById("page2").classList.add("hidden");
+document.getElementById("page3").classList.remove("hidden");
+}
+
+// Escaping NO button
+const noBtn=document.getElementById("noBtn");
+
+document.addEventListener("mousemove",()=>{
+if(document.getElementById("page3").classList.contains("hidden")) return;
+
+noBtn.style.left=Math.random()*(window.innerWidth-150)+"px";
+noBtn.style.top=Math.random()*(window.innerHeight-100)+"px";
+});
+
+function yesClicked(){
+
+for(let i=0;i<120;i++){
+
+let heart=document.createElement("div");
+heart.innerHTML="❤️";
+heart.style.position="fixed";
+heart.style.left="50%";
+heart.style.top="50%";
+heart.style.fontSize=(15+Math.random()*30)+"px";
+
+document.body.appendChild(heart);
+
+let x=(Math.random()-0.5)*1200;
+let y=(Math.random()-0.5)*1200;
+
+heart.animate([
+{transform:"translate(0,0)",opacity:1},
+{transform:`translate(${x}px,${y}px)`,opacity:0}
+],{
+duration:2000
+});
+
+setTimeout(()=>heart.remove(),2000);
+}
+
+document.getElementById("result").innerHTML=
+"🎉 Meri Madam Jii Maan Gai ❤️🥹<br><br>Thank you for giving this Bandar another chance 🐵💜";
+}
+</script></body>
+</html>
